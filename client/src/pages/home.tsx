@@ -13,7 +13,7 @@ export default function Home() {
             Welcome to vSpaceVote
           </h1>
           <p className="text-xl text-muted-foreground max-w-[800px] mx-auto">
-            A secure and accessible online voting platform designed to make democratic participation easier while maintaining the highest standards of security and privacy.
+            A secure and accessible online voting platform designed to enhance e-governance participation while maintaining the highest standards of security and privacy.
           </p>
         </div>
 
@@ -117,7 +117,7 @@ export default function Home() {
           <h2 className="text-2xl font-semibold mb-4">How It Works</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-xl font-medium mb-2">For Voters</h3>
+              <h3 className="text-xl font-medium mb-2">For Citizens</h3>
               <ul className="list-disc pl-5 space-y-2">
                 <li>Simple and secure authentication process</li>
                 <li>Easy-to-use voting interface</li>
@@ -126,12 +126,12 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h3 className="text-xl font-medium mb-2">For Election Officials</h3>
+              <h3 className="text-xl font-medium mb-2">For E-Governance Officials</h3>
               <ul className="list-disc pl-5 space-y-2">
                 <li>Comprehensive administration tools</li>
                 <li>Real-time monitoring capabilities</li>
                 <li>Detailed audit trails and reporting</li>
-                <li>Technical support throughout the election</li>
+                <li>Technical support throughout the process</li>
               </ul>
             </div>
           </div>
