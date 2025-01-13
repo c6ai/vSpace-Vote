@@ -1,0 +1,63 @@
+---
+
+## Project Structure 📂
+
+vSpaceVote/
+├── client/             # React Frontend
+│   ├── public/
+│   │   └── index.html
+│   ├── src/
+│   │   ├── components/    # React components
+│   │   ├── contexts/       # React Context for state management
+│   │   ├── hooks/         # Custom React hooks
+│   │   ├── services/      # API interaction logic
+│   │   ├── utils/         # Utility functions
+│   │   ├── App.js         # Main application component
+│   │   ├── index.js       # Entry point
+│   │   └── setupTests.js  # Testing setup
+│   ├── package.json
+│   ├── .env.development   # Environment variables (development)
+│   ├── .env.production    # Environment variables (production)
+│   └── ...
+├── server/             # Express.js Backend
+│   ├── routes/          # API route handlers
+│   ├── models/          # Data models (if using an ORM)
+│   ├── controllers/     # Request handling logic
+│   ├── middleware/      # Express middleware
+│   ├── services/       # Business logic
+│   ├── utils/          # Utility functions
+│   ├── app.js          # Express application setup
+│   ├── server.js       # Server startup
+│   ├── package.json
+│   ├── .env.development   # Environment variables (development)
+│   ├── .env.production    # Environment variables (production)
+│   └── ...
+├── infra/              # Terraform Infrastructure as Code
+│   ├── modules/         # Reusable Terraform modules (e.g., network, cluster)
+│   ├── main.tf          # Main Terraform configuration
+│   ├── variables.tf     # Input variables
+│   ├── outputs.tf       # Output values
+│   └── ...
+├── .github/            # GitHub Actions workflows
+│   └── workflows/
+│       ├── main.yml       # CI/CD workflow
+│       └── ...
+├── scripts/            # Helper scripts
+│   ├── setup_db.sh      # Database setup script
+│   ├── seed_db.sh       # Database seeding script
+│   └── ...
+├── tests/              # Integration and E2E tests (may also reside within client/server)
+│   ├── e2e/             # End-to-end tests (Playwright)
+│   │   ├── ballots.spec.js
+│   │   └── ...
+│   ├── integration/      # Integration tests
+│   │   └── ...
+│   ├── playwright.config.js # Playwright configuration
+│   └── ...
+├── .gitignore
+├── package.json        # Root-level package.json for common scripts/dependencies
+├── README.md           # This file
+└── LICENSE
+
+
+---

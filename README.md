@@ -311,25 +311,62 @@ SUPABASE_ANON_KEY=your_supabase_anon_key
 ## Project Structure 📂
 
 ```
-.
-├── client/
+vSpaceVote/
+├── client/             # React Frontend
+│   ├── public/
+│   │   └── index.html
 │   ├── src/
-│   │   ├── components/
-│   │   │   ├── auth/       # Authentication components
-│   │   │   ├── docs/       # Documentation viewer
-│   │   │   ├── layout/     # Layout components
-│   │   │   └── ui/         # Reusable UI components
-│   │   ├── hooks/          # Custom React hooks
-│   │   ├── lib/            # Utility functions and configs
-│   │   ├── pages/          # Page components
-│   │   └── App.tsx         # Main application component
-├── server/
-│   ├── routes/             # API routes
-│   ├── middleware/         # Express middleware
-│   └── index.ts            # Server entry point
-├── db/
-│   └── schema.ts           # Database schema definitions
-└── README.md
+│   │   ├── components/    # React components
+│   │   ├── contexts/      # React Context for state management
+│   │   ├── hooks/        # Custom React hooks
+│   │   ├── services/     # API interaction logic
+│   │   ├── utils/        # Utility functions
+│   │   ├── App.js        # Main application component
+│   │   ├── index.js      # Entry point
+│   │   └── setupTests.js # Testing setup
+│   ├── package.json
+│   ├── .env.development  # Environment variables (development)
+│   ├── .env.production   # Environment variables (production)
+│   └── ...
+├── server/             # Express.js Backend
+│   ├── routes/         # API route handlers
+│   ├── models/         # Data models (if using an ORM)
+│   ├── controllers/    # Request handling logic
+│   ├── middleware/     # Express middleware
+│   ├── services/       # Business logic
+│   ├── utils/         # Utility functions
+│   ├── app.js         # Express application setup
+│   ├── server.js      # Server startup
+│   ├── package.json
+│   ├── .env.development  # Environment variables (development)
+│   ├── .env.production   # Environment variables (production)
+│   └── ...
+├── infra/             # Terraform Infrastructure as Code
+│   ├── modules/        # Reusable Terraform modules (e.g., network, cluster)
+│   ├── main.tf         # Main Terraform configuration
+│   ├── variables.tf    # Input variables
+│   ├── outputs.tf      # Output values
+│   └── ...
+├── .github/           # GitHub Actions workflows
+│   └── workflows/
+│       ├── main.yml      # CI/CD workflow
+│       └── ...
+├── scripts/           # Helper scripts
+│   ├── setup_db.sh     # Database setup script
+│   ├── seed_db.sh      # Database seeding script
+│   └── ...
+├── tests/             # Integration and E2E tests
+│   ├── e2e/            # End-to-end tests (Playwright)
+│   │   ├── ballots.spec.js
+│   │   └── ...
+│   ├── integration/     # Integration tests
+│   │   └── ...
+│   ├── playwright.config.js # Playwright configuration
+│   └── ...
+├── .gitignore
+├── package.json       # Root-level package.json for common scripts/dependencies
+├── README.md          # Project documentation
+└── LICENSE
 ```
 
 ## Development Workflow 🔄
@@ -457,7 +494,7 @@ The application uses Supabase for authentication with the following features:
 | **4.1.10** Business Continuity and Data Recovery       | ☐ (TODO)    | Develop and document a business continuity and data recovery plan with RTO ≤ 1 hour and RPO ≤ 15 minutes.                                                                       |
 | **4.1.11** Staff Device and Network Security          | ☐ (TODO)    | Enforce policies for secure staff devices and networks with MFA.                                                                                                             |
 | **4.1.12** Admin Two-Factor Authentication            | ☐ (TODO)    | Implement two-factor authentication for the administrative interface using Supabase Auth.                                                                                   |
-| **4.1.13** Secure Password and Key Sharing             | ☐ (TODO)    | Document procedures for securely sharing passwords and decryption keys.                                                                                                       |
+| **4.1.13** Secure Password and Key Sharing             | ☐ (TODO)    | Document procedures for securely sharing passwords and decryption keys.                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | **4.1.14** Admin Password Reset                       | ☐ (TODO)    | Enable password reset for municipal administrators through Supabase Auth.                                                                                                  |
 | **4.1.15** Cryptographic Module Examination           | ☐ (TODO)    | Use a well-vetted cryptographic module (e.g., OpenSSL) that has undergone independent examination.                                                                             |
 | **4.1.16** Client-Side Threshold Encryption          | ☐ (TODO)    | Implement and document threshold encryption if client-side encryption is used.                                                                                                |

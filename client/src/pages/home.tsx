@@ -136,6 +136,45 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Project Structure Section */}
+        <div className="prose prose-gray max-w-none mt-12 pb-12">
+          <h2 className="text-2xl font-semibold mb-4">Project Organization</h2>
+          <p className="text-muted-foreground mb-6">
+            vSpaceVote follows a clean, modular structure designed for scalability and maintainability:
+          </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-medium mb-2">Frontend (Web Interface)</h3>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>Modern React components for the user interface</li>
+                <li>Secure authentication and session management</li>
+                <li>Responsive design that works on all devices</li>
+                <li>Accessibility-first development approach</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-medium mb-2">Backend (Server)</h3>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>Robust Express.js API server</li>
+                <li>Secure data handling and storage</li>
+                <li>Comprehensive error handling</li>
+                <li>Detailed audit logging system</li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-8">
+            <h3 className="text-xl font-medium mb-2">Infrastructure & Testing</h3>
+            <ul className="list-disc pl-5 space-y-2 md:columns-2">
+              <li>Infrastructure as Code with Terraform</li>
+              <li>Automated CI/CD pipelines</li>
+              <li>End-to-end testing with Playwright</li>
+              <li>Comprehensive integration tests</li>
+              <li>Database management scripts</li>
+              <li>Development utilities and tools</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );
