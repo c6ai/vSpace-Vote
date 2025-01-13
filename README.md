@@ -68,10 +68,10 @@ This section outlines the requirements for vSpaceVote, sorted in a logical order
 ### I. Security of Systems and Data (4.x.x)
 
 *   **Authentication and Authorization:**
-    *   [5.1.1] Voter Eligibility Authentication: vSpaceVote shall only permit ballot casting for individuals able to authenticate eligibility, in line with the municipality's chosen authentication mechanism.
-    *   [4.1.1.h] Strong Authentication: vSpaceVote shall furnish strong authentication recommendations for municipalities and ensure no easy impersonation risks. [5.2.2]
+    *   [5.1.1] Voter Eligibility Authentication: vSpaceVote shall only permit ballot casting for individuals able to authenticate eligibility, in line with the constituency's chosen authentication mechanism.
+    *   [4.1.1.h] Strong Authentication: vSpaceVote shall furnish strong authentication recommendations for constituencies and ensure no easy impersonation risks. [5.2.2]
     *   [4.1.12] Admin Two-Factor Authentication: Any administrative interface in vSpaceVote for election officials shall require two-factor authentication (not counting training/demo modules).
-    *   [4.1.14] Admin Password Reset: vSpaceVote shall enable municipal administrators with appropriate authenticated rights to reset passwords.
+    *   [4.1.14] Admin Password Reset: vSpaceVote shall enable constituency-related administrators with appropriate authenticated rights to reset passwords.
     *   [5.2.2] Authentication Safeguards: vSpaceVote shall safeguard the authentication process so that an attacker cannot impersonate a voter using just fixed attributes (e.g., date of birth) or basic info from a Voter Information Letter.
     *   [7.1.1.1] Role-Based Permission Framework: vSpaceVote shall implement a role-based permission framework so that users only access the minimum resources needed for their tasks.
 
@@ -90,7 +90,7 @@ This section outlines the requirements for vSpaceVote, sorted in a logical order
 
 *   **Infrastructure and Network Security:**
     *   [4.1.1.k] Network Security Configuration: vSpaceVote shall ensure secure network setups to avoid vulnerabilities that expose data.
-    *   [4.1.3] Infrastructure Control and Details: If applicable, vSpaceVote should maintain direct physical or logical control over the deployed equipment; it shall provide details on the infrastructure and its storage location to municipalities.
+    *   [4.1.3] Infrastructure Control and Details: If applicable, vSpaceVote should maintain direct physical or logical control over the deployed equipment; it shall provide details on the infrastructure and its storage location to constituencies.
     *   [4.1.7] Data Residency (Geo-Location): vSpaceVote shall not store or host any production election data or code on servers located outside the designated Geo-Location, including cloud data centers.
     *   [4.1.9] Firewalls, IDS/IPS, Logging, Threat Detection: vSpaceVote shall employ firewalls, intrusion detection/prevention, detailed logging with backups, and threat detection.
     *   [4.1.1.d] DoS/DDoS Protection: vSpaceVote shall include protective mechanisms (e.g., load balancing, intrusion prevention) to remain accessible under DoS/DDoS attempts.
@@ -107,14 +107,15 @@ This section outlines the requirements for vSpaceVote, sorted in a logical order
 *   **Risk Management and Compliance:**
     *   [4.1.1] Risk Mitigation Documentation: vSpaceVote shall document how it detects, prevents, or sufficiently mitigates each of the commonly cited risk classes (external threat actors, insider threats, malware, DoS/DDoS, social engineering, device tampering, insufficient IT resources, weak authentication, data exfiltration/eavesdropping, logic/accuracy errors, network configuration errors, and unauthorized modifications).
     *   [4.1.2] Security Controls List & Checks: vSpaceVote shall publish a list of security controls/guarantees protecting the vote, and perform regular security checks before and during elections.
-    *   [4.1.17] Cyber-Incident Response Plan: vSpaceVote shall provide a cyber-incident response plan specifying how incidents are handled, who is notified, and under what circumstances, ideally aligning with municipal procedures.
+    *   [4.1.17] Cyber-Incident Response Plan: vSpaceVote shall provide a cyber-incident response plan specifying how incidents are handled, who is notified, and under what circumstances, ideally aligning with constituency-related procedures.
     *   [4.1.18] Threat Detection and Failsafe Training: vSpaceVote shall provide training/documentation on threat detection, response actions, and failsafe procedures if a compromise is detected. A suggested failsafe plan includes acceptable downtime, SLA details, detection, and recovery measures.
     *   [4.3.2] Subcontractor Security: vSpaceVote is responsible for ensuring any subcontracted third parties meet security requirements, with all known risks documented and mitigated.
-    *   [11.2.1] Security Categorization: Municipal election administrators should complete a security categorization (per guidelines applicable to the designated Geo-Location) before each election; vSpaceVote should provide any needed technical info to facilitate this.
-    *   [11.2.2] High Unmitigated Risk: The municipality might refrain from using an online solution if unmitigated risk is evaluated as "High." vSpaceVote shall respect this determination.
+    *   [11.2.1] Security Categorization: Constituency-related election administrators should complete a security categorization (per guidelines applicable to the designated Geo-Location) before each election; vSpaceVote should provide any needed technical info to facilitate this.
+    *   [11.2.2] High Unmitigated Risk: The constituency might refrain from using an online solution if unmitigated risk is evaluated as "High." vSpaceVote shall respect this determination.
     *   [11.2.3] Harmonized Threat Risk Assessment: vSpaceVote shall cooperate with a Harmonized Threat Risk Assessment, addressing the possibility of various software/hardware compromises or collusion by multiple actors.
     *   [11.2.4] Final Residual Risk Acceptance: vSpaceVote shall respect the requirement that the final residual risk acceptance be signed by the Election Administrator or equivalent.
     *   [4.1.10] Business Continuity and Data Recovery: vSpaceVote shall adopt business continuity and data recovery plans with a Recovery Time Objective ≤ 1 hour and a Recovery Point Objective ≤ 15 minutes.
+
 
 ### II. Operational and Procedural Requirements (5.x.x, 6.x.x, 7.x.x, 11.1.x)
 
@@ -124,7 +125,7 @@ This section outlines the requirements for vSpaceVote, sorted in a logical order
     *   [6.2.5] Voter Confirmation of Vote Intent: vSpaceVote shall enable each voter to confirm that the cast vote reflects their intent and has not been altered.
     *   [6.2.6] Independent Evidence of Ballot Inclusion: vSpaceVote should provide evidence (independent from the main system) that each legitimate ballot is included in final results, and only eligible ballots are counted.
     *   [5.1.2] Pre-Tally Ballot Verification: Before tallying, vSpaceVote should verify that all stored ballots were cast by eligible voters.
-    *   [6.2.1] Audit Procedure: vSpaceVote shall provide an audit procedure, with a testing manual and training for municipalities to conduct audits.
+    *   [6.2.1] Audit Procedure: vSpaceVote shall provide an audit procedure, with a testing manual and training for constituencies to conduct audits.
     *   [6.2.3] Human-Readable Audit Log: vSpaceVote shall produce a human-readable, non-writeable audit log of user actions (login, cast, logoff) but not the actual ballot choice.
     *   [6.2.4] Chronological System Log: vSpaceVote shall maintain a chronological system log of processes during the voting period, exportable for audit or retention.
     *   [6.2.2] Immutable Audit Logs: vSpaceVote shall secure and render all audit logs immutable to prevent post-election modification.
@@ -132,11 +133,11 @@ This section outlines the requirements for vSpaceVote, sorted in a logical order
     *   [7.1.2.1] Independently Verifiable Cryptographic Proof: vSpaceVote should produce (where applicable) independently verifiable cryptographic proof of correct election results. If the declared result is correct, such evidence should convince observers; if incorrect, it should be detectable.
 
 *   **Data Management:**
-    *   [7.1.3.1] Return or Sanitize Election Data: All election data gathered or processed by vSpaceVote or its subcontractors shall be returned or sanitized upon instruction of the municipality, subject to relevant legislation.
-    *   [7.1.3.2] Data Retention for Legal Reasons: If a legal or procedural reason arises (recount or court order), vSpaceVote shall retain relevant data until instructed otherwise by the municipality.
-    *   [7.1.3.7] Data Destruction on Municipality's Instructions: vSpaceVote shall destroy data upon the municipality's instructions, subject to record-retention legislation.
+    *   [7.1.3.1] Return or Sanitize Election Data: All election data gathered or processed by vSpaceVote or its subcontractors shall be returned or sanitized upon instruction of the constituency, subject to relevant legislation.
+    *   [7.1.3.2] Data Retention for Legal Reasons: If a legal or procedural reason arises (recount or court order), vSpaceVote shall retain relevant data until instructed otherwise by the constituency.
+    *   [7.1.3.7] Data Destruction on Constituency's Instructions: vSpaceVote shall destroy data upon the constituency's instructions, subject to record-retention legislation.
     *   [7.1.3.4] Privacy and Re-identification Risk Assessments: vSpaceVote shall conduct privacy and re-identification risk assessments if usage or retention of data changes. Any residual risks must be shared with election authorities.
-    *   [7.1.3.3] No Unauthorized Data Sharing: No proprietary or confidential data shall be shared or published without municipality's written permission.
+    *   [7.1.3.3] No Unauthorized Data Sharing: No proprietary or confidential data shall be shared or published without constituency's written permission.
 
 *   **Testing and Validation:**
     *   [6.1.1] Logic and Accuracy (L&A) Testing: vSpaceVote shall undergo logic and accuracy (L&A) testing, under the supervision of the election authority, before the voting period.
@@ -161,8 +162,9 @@ This section outlines the requirements for vSpaceVote, sorted in a logical order
     *   [6.3.1] Documentation for Election Administrator: vSpaceVote should provide (under favorable terms) the election administrator with: technical architecture and system specifications; user handbooks; performance documentation on prior outages or vulnerabilities; threat environment assessment and risk-level overview; source code (for official or third-party inspection); confirmation of data destruction/retention; vulnerability assessment reports conducted in the prior 52 weeks.
     *   [6.3.2] Processes for Independent Observers: vSpaceVote shall document the processes for how independent observers or scrutineers can verify the election, e.g., verifying evidence, observing counting, or handling recounts.
     *   [4.1.13] Secure Password and Key Sharing: All administrator passwords and decryption keys shall be shared securely with the designated election authority, who is solely responsible for safeguarding them.
-    *   [7.1.3.5] Notification of Data Collection and Usage: If the municipality authorizes data processing, election administrators must notify the electorate about data collection and usage, ensuring that all data is de-identified for any product improvements.
+    *   [7.1.3.5] Notification of Data Collection and Usage: If the constituency authorizes data processing, election administrators must notify the electorate about data collection and usage, ensuring that all data is de-identified for any product improvements.
     *   [7.1.3.6] Opt-Out of Product-Improvement Data Collection: vSpaceVote shall include technical measures allowing users to opt out of product-improvement data collection. Any data used thusly must never be re-identified.
+
 
 ### III. User Interface and Accessibility (9.x.x)
 
@@ -182,6 +184,7 @@ This section outlines the requirements for vSpaceVote, sorted in a logical order
 *   [9.1.1.14] Unicode Character Support: vSpaceVote shall support Unicode characters for candidate names in English, French, and relevant local languages as required by the designated Geo-Location.
 *   [9.1.1.15] Usability/Accessibility Testing: vSpaceVote shall be tested for usability/accessibility (e.g., ensuring interoperability with assistive technologies).
 *   [9.1.2.1] Accessible and Interoperable Reports: All vSpaceVote-generated reports shall be accessible and interoperable (e.g., CSV format).
+
 
 ### IV. System Management and Administration (10.x.x, 11.x.x)
 
@@ -510,7 +513,7 @@ The application uses Supabase for authentication with the following features:
 | **4.1.1.l** Unauthorized Code Modification Prevention   | ☐ (TODO)    | Implement code review, use signed commits, and enforce secure deployment practices through CI/CD.                                                                                  |
 | **4.1.2** Security Controls List & Checks             | ☐ (TODO)    | Publish a list of security controls and perform regular security checks.                                                                                                     |
 | **4.1.3** Infrastructure Control and Details          | ☐ (TODO)    | Document infrastructure details and control mechanisms (using GCP Anthos and Terraform).                                                                                       |
-| **4.1.4** System Sanitization and Patching            | ☐ (TODO)    | Ensure systems are delivered free of user data and are regularly patched.                                                                                                      |
+| **4.1.4** System Sanitization and Patching            | ☐ (TODO)    | Ensure systems are delivered free of user data and are regularly patched.                                                                                                                                   |
 | **4.1.5** Multi-Person Oversight                       | ☐ (TODO)    | Enforce multi-person oversight for development, deployment, and operations through code reviews, CI/CD approvals, etc.                                                              |
 |**4.1.6** Heterogeneous Environments                 | ☐ (TODO)    | Consider deploying across multiple zones/regions for increased resilience (if feasible).                                                                                      |
 | **4.1.7** Data Residency (Geo-Location)            | ☐ (TODO)    | Ensure data and infrastructure are located within the designated Geo-Location (use Geo-Location specific GCP regions).                                                                                             |
@@ -520,7 +523,7 @@ The application uses Supabase for authentication with the following features:
 | **4.1.11** Staff Device and Network Security          | ☐ (TODO)    | Enforce policies for secure staff devices and networks with MFA.                                                                                                             |
 | **4.1.12** Admin Two-Factor Authentication            | ☐ (TODO)    | Implement two-factor authentication for the administrative interface using Supabase Auth.                                                                                   |
 | **4.1.13** Secure Password and Key Sharing             | ☐ (TODO)    | Document procedures for securely sharing passwords and decryption keys.                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| **4.1.14** Admin Password Reset                       | ☐ (TODO)    | Enable password reset for municipal administrators through Supabase Auth.                                                                                                  |
+| **4.1.14** Admin Password Reset                       | ☐ (TODO)    | Enable password reset for constituency-related administrators through Supabase Auth.                                                                                                  |
 | **4.1.15** Cryptographic Module Examination           | ☐ (TODO)    | Use a well-vetted cryptographic module (e.g., OpenSSL) that has undergone independent examination.                                                                             |
 | **4.1.16** Client-Side Threshold Encryption          | ☐ (TODO)    | Implement and document threshold encryption if client-side encryption is used.                                                                                                |
 | **4.1.17** Cyber-Incident Response Plan               | ☐ (TODO)    | Develop and document a cyber-incident response plan.                                                                                                                          |
@@ -531,7 +534,7 @@ The application uses Supabase for authentication with the following features:
 | **4.3.2** Subcontractor Security                      | ☐ (TODO)    | Ensure subcontractors meet security requirements.                                                                                                                                |
 | **4.3.3** Load and Simulation Testing                 | ☐ (TODO)    | Conduct load testing to simulate election day loads.                                                                                                                            |
 | **4.3.4** Backup Subcontractor                        | ☐ (TODO)    | Engage a backup subcontractor if necessary.                                                                                                                                    |
-| **5.1.1** Voter Eligibility Authentication           | ☐ (TODO)    | Integrate with the municipality's chosen authentication mechanism through Supabase Auth.                                                                                      |
+| **5.1.1** Voter Eligibility Authentication           | ☐ (TODO)    | Integrate with the constituency's chosen authentication mechanism through Supabase Auth.                                                                                      |
 | **5.1.2** Pre-Tally Ballot Verification              | ☐ (TODO)    | Verify that all stored ballots were cast by eligible voters before tallying.                                                                                                     |
 | **5.2.1** One Vote Per Voter Per Contest             | ☐ (TODO)    | Ensure each voter can cast only one ballot per contest, handling multiple channels.                                                                                             |
 | **5.2.2** Authentication Safeguards                   | ☐ (TODO)    | Safeguard the authentication process to prevent impersonation.                                                                                                                  |
@@ -558,9 +561,9 @@ The application uses Supabase for authentication with the following features:
 | **7.1.3.2** Data Retention for Legal Reasons          | ☐ (TODO)    | Retain relevant data for legal or procedural reasons (recount, court order).                                                                                                   |
 | **7.1.3.3** No Unauthorized Data Sharing             | ☐ (TODO)    | Do not share or publish proprietary or confidential data without written permission.                                                                                            |
 | **7.1.3.4** Privacy and Re-identification Risk Assessments| ☐ (TODO)    | Conduct privacy and re-identification risk assessments if data usage or retention changes.                                                                                    |
-| **7.1.3.5** Notification of Data Collection and Usage | ☐ (TODO)    | Notify the electorate about data collection and usage if authorized by the municipality.                                                                                          |
+| **7.1.3.5** Notification of Data Collection and Usage | ☐ (TODO)    | Notify the electorate about data collection and usage if authorized by the constituency.                                                                                          |
 | **7.1.3.6** Opt-Out of Product-Improvement Data Collection| ☐ (TODO)    | Include technical measures allowing users to opt out of product-improvement data collection.                                                                                   |
-| **7.1.3.7** Data Destruction on Municipality's Instructions| ☐ (TODO)    | Destroy data upon the municipality's instructions, subject to record-retention legislation.                                                                                 |
+| **7.1.3.7** Data Destruction on Constituency's Instructions| ☐ (TODO)    | Destroy data upon the constituency's instructions, subject to record-retention legislation.                                                                                 |
 | **8.1.1** Vote Integrity                              | ☐ (TODO)    | Protect the integrity of votes throughout the entire process.                                                                                                                   |
 | **8.1.2** Vote Storage Without Voter Linkage         | ☐ (TODO)    | Store each vote without direct voter linkage, preventing re-identification.                                                                                                     |
 | **8.1.3** Vote Secrecy                               | ☐ (TODO)    | Guarantee the secrecy of each vote during casting, transport, storage, and tabulation.                                                                                           |
@@ -587,11 +590,11 @@ The application uses Supabase for authentication with the following features:
 | **11.1.2** Third-Party Contractor Screening           | ☐ (TODO)    | Ensure all third-party contractors meet local security and screening requirements.                                                                                             |
 | **11.1.3** Vote Reconciliation from Multiple Channels| ☐ (TODO)    | Integrate logic ensuring that if multiple voting channels exist, only one vote per voter per contest is counted in final tabulation.                                               |
 | **11.2.1** Security Categorization                    | ☐ (TODO)    | Facilitate a security categorization (per guidelines applicable to the designated Geo-Location) before each election.                                                              |
-| **11.2.2** High Unmitigated Risk                      | ☐ (TODO)    | Respect the municipality's determination to refrain from using an online solution if the unmitigated risk is evaluated as "High."                                                  |
+| **11.2.2** High Unmitigated Risk                      | ☐ (TODO)    | Respect the constituency's determination to refrain from using an online solution if unmitigated risk is evaluated as "High."                                                  |
 | **11.2.3** Harmonized Threat Risk Assessment         | ☐ (TODO)    | Cooperate with a Harmonized Threat Risk Assessment, addressing various compromise scenarios.                                                                                        |
 | **11.2.4** Final Residual Risk Acceptance             | ☐ (TODO)    | Respect the requirement that the final residual risk acceptance be signed by the Election Administrator or equivalent.                                                              |
-| **11.2.5** Physical Security of Devices (Idle)        | ☐ (TODO)    | Ensure any physical devices used for online voting reside in physically secure environments when idle.                                                                           |
-| **11.2.6** Physical Security Measures (Tampering)    | ☐ (TODO)    | The municipal authority shall implement physical security measures to detect/prevent tampering with vSpaceVote-related devices prior to and after the election.                   |
+| **11.2.5** Physical Security of Devices (Idle)        | ☐ (TODO)    | Ensure any physical devices used for online voting (e.g., specialized servers) reside in physically secure environments when idle.                                                                           |
+| **11.2.6** Physical Security Measures (Tampering)    | ☐ (TODO)    | The constituency-related authority shall implement physical security measures to detect/prevent tampering with vSpaceVote-related devices prior to and after the election.                   |
 
 
 ## Contributing
