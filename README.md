@@ -5,6 +5,31 @@
 
 **vSpaceVote** is a web-based voting system designed for secure and transparent elections or decision-making processes. It leverages a modern technology stack to ensure security, reliability, accessibility, and auditability.
 
+## Table of Contents 📑
+
+- [Current Implementation Status](#current-implementation-status-)
+- [Tech Stack](#tech-stack)
+- [Requirements Breakdown (ReqIF)](#requirements-breakdown-reqif-)
+  - [Security of Systems and Data](#i-security-of-systems-and-data-4xx)
+  - [Operational and Procedural Requirements](#ii-operational-and-procedural-requirements-5xx-6xx-7xx-11xx)
+  - [User Interface and Accessibility](#iii-user-interface-and-accessibility-9xx)
+  - [System Management and Administration](#iv-system-management-and-administration-10xx-11xx)
+- [Development Guide for Software Engineers](#development-guide-for-software-engineers-)
+  - [Local Development Setup](#local-development-setup)
+  - [Architecture Overview](#architecture-overview)
+  - [Best Practices](#best-practices)
+- [Getting Started](#getting-started-)
+  - [Prerequisites](#prerequisites)
+  - [Installation and Setup](#installation-and-setup)
+- [Project Structure](#project-structure-)
+- [Development Workflow](#development-workflow-)
+  - [Authentication Implementation](#authentication-implementation)
+  - [Documentation System](#documentation-system)
+- [Testing](#testing-)
+- [Deployment](#deployment-)
+- [Security Considerations](#security-considerations-)
+- [Compliance Matrix](#compliance-matrix-)
+
 ## Current Implementation Status 🚧
 
 ### Authentication & Core Features
@@ -487,7 +512,7 @@ The application uses Supabase for authentication with the following features:
 | **4.1.3** Infrastructure Control and Details          | ☐ (TODO)    | Document infrastructure details and control mechanisms (using GCP Anthos and Terraform).                                                                                       |
 | **4.1.4** System Sanitization and Patching            | ☐ (TODO)    | Ensure systems are delivered free of user data and are regularly patched.                                                                                                      |
 | **4.1.5** Multi-Person Oversight                       | ☐ (TODO)    | Enforce multi-person oversight for development, deployment, and operations through code reviews, CI/CD approvals, etc.                                                              |
-| **4.1.6** Heterogeneous Environments                 | ☐ (TODO)    | Consider deploying across multiple zones/regions for increased resilience (if feasible).                                                                                      |
+|**4.1.6** Heterogeneous Environments                 | ☐ (TODO)    | Consider deploying across multiple zones/regions for increased resilience (if feasible).                                                                                      |
 | **4.1.7** Data Residency (Geo-Location)            | ☐ (TODO)    | Ensure data and infrastructure are located within the designated Geo-Location (use Geo-Location specific GCP regions).                                                                                             |
 | **4.1.8** End-to-End Encryption                       | ☐ (TODO)    | Implement end-to-end encryption (in transit and at rest).                                                                                                                      |
 | **4.1.9** Firewalls, IDS/IPS, Logging, Threat Detection| ☐ (TODO)    | Configure firewalls, intrusion detection/prevention, logging, and threat detection on GCP.                                                                                    |
