@@ -1,0 +1,144 @@
+## Requirements Breakdown (ReqIF) 🏗️
+
+This section outlines the requirements for vSpaceVote, sorted in a logical order for development and testing. The original ReqIF numbering is maintained for traceability.
+
+**I. Security of Systems and Data (4.x.x)**
+
+*   **Authentication and Authorization:**
+    *   [5.1.1] Voter Eligibility Authentication: vSpaceVote shall only permit ballot casting for individuals able to authenticate eligibility, in line with the municipality's chosen authentication mechanism.
+    *   [4.1.1.h] Strong Authentication: vSpaceVote shall furnish strong authentication recommendations for municipalities and ensure no easy impersonation risks. [5.2.2]
+    *   [4.1.12] Admin Two-Factor Authentication: Any administrative interface in vSpaceVote for election officials shall require two-factor authentication (not counting training/demo modules).
+    *   [4.1.14] Admin Password Reset: vSpaceVote shall enable municipal administrators with appropriate authenticated rights to reset passwords.
+    *   [5.2.2] Authentication Safeguards: vSpaceVote shall safeguard the authentication process so that an attacker cannot impersonate a voter using just fixed attributes (e.g., date of birth) or basic info from a Voter Information Letter.
+    *   [7.1.1.1] Role-Based Permission Framework: vSpaceVote shall implement a role-based permission framework so that users only access the minimum resources needed for their tasks.
+
+*   **Data Protection and Integrity:**
+    *   [4.1.8] End-to-End Encryption: vSpaceVote shall encrypt data end-to-end (in transit and at rest) and plan for secure erasure or long-term confidentiality.
+    *   [4.1.1.i] Data Exfiltration/Eavesdropping Protection: vSpaceVote shall describe how it prevents or detects unauthorized viewing/modification of voter data at all stages (e.g., server-side, client-side, in transit).
+    *   [8.1.2] Vote Storage Without Voter Linkage: vSpaceVote shall store each vote without direct voter linkage, preventing re-identification of individual voters.
+    *   [8.1.3] Vote Secrecy: vSpaceVote shall guarantee the secrecy of each vote during casting, transport, storage, and tabulation.
+    *   [8.1.4] Prevention of Ballot Tracing: vSpaceVote shall ensure no election official or system operator can trace a ballot back to a specific voter.
+    *   [4.1.1.j] Logic and Accuracy Error Prevention: vSpaceVote shall safeguard against software or configuration errors that miscount or alter votes.
+    *   [8.1.1] Vote Integrity: vSpaceVote shall protect the integrity of votes throughout the entire process.
+    *   [4.1.1.c] Malware Protection: vSpaceVote shall provide measures to detect or prevent malicious software from intercepting, modifying, or denying a voter's input.
+    *   [4.1.1.f] Voter Device Tampering Mitigation: vSpaceVote shall mitigate or detect if a compromised front-end (browser, OS, or app) tries to manipulate the voting interface.
+    *   [4.2.2] Prevention of Vote Data on Voter Devices: vSpaceVote shall prevent or remove any vote data from long-term storage on a voter's device (cookies, files, beacons, etc.) immediately after submission or ballot cancellation.
+    *   [4.2.1] Residual Data Mitigation on Public Devices: vSpaceVote shall advise on mitigating or preventing residual data from voter transactions on public or untrusted devices (e.g., library PCs), including ensuring ballot data resides only in volatile memory.
+
+*   **Infrastructure and Network Security:**
+    *   [4.1.1.k] Network Security Configuration: vSpaceVote shall ensure secure network setups to avoid vulnerabilities that expose data.
+    *   [4.1.3] Infrastructure Control and Details: If applicable, vSpaceVote should maintain direct physical or logical control over the deployed equipment; it shall provide details on the infrastructure and its storage location to municipalities.
+    *   [4.1.7] Data Residency (Geo-Location): vSpaceVote shall not store or host any production election data or code on servers located outside the designated Geo-Location, including cloud data centers.
+    *   [4.1.9] Firewalls, IDS/IPS, Logging, Threat Detection: vSpaceVote shall employ firewalls, intrusion detection/prevention, detailed logging with backups, and threat detection.
+    *   [4.1.1.d] DoS/DDoS Protection: vSpaceVote shall include protective mechanisms (e.g., load balancing, intrusion prevention) to remain accessible under DoS/DDoS attempts.
+    *   [10.1.2] Contingency Plan for Outages: vSpaceVote shall have a contingency plan (preferably independently reviewed) to address network or power outages and share it with election authorities.
+
+*   **System and Code Security:**
+    *   [4.1.1.l] Unauthorized Code Modification Prevention: vSpaceVote shall provide version control and verification so the deployed code is identical to what passed scrutiny.
+    *   [4.1.5] Multi-Person Oversight: vSpaceVote's development shall follow multi-person oversight in software/hardware configuration, user testing, ops maintenance, etc.
+    *   [4.1.15] Cryptographic Module Examination: Server-side cryptographic operations (including key generation) in vSpaceVote must use a cryptographic module that has undergone independent examination.
+    *   [4.1.16] Client-Side Threshold Encryption: Where client-side encryption is used, vSpaceVote shall employ threshold encryption for generation of decryption keys.
+    *   [4.1.4] System Sanitization and Patching: vSpaceVote shall deliver systems free of user data, ensuring all prior data is sanitized and the system is patched.
+    *   [4.1.11] Staff Device and Network Security: All staff involved (including subcontractors) shall operate on secure, encrypted devices and networks with multi-factor authentication (MFA).
+
+*   **Risk Management and Compliance:**
+    *   [4.1.1] Risk Mitigation Documentation: vSpaceVote shall document how it detects, prevents, or sufficiently mitigates each of the commonly cited risk classes (external threat actors, insider threats, malware, DoS/DDoS, social engineering, device tampering, insufficient IT resources, weak authentication, data exfiltration/eavesdropping, logic/accuracy errors, network configuration errors, and unauthorized modifications).
+    *   [4.1.2] Security Controls List & Checks: vSpaceVote shall publish a list of security controls/guarantees protecting the vote, and perform regular security checks before and during elections.
+    *   [4.1.17] Cyber-Incident Response Plan: vSpaceVote shall provide a cyber-incident response plan specifying how incidents are handled, who is notified, and under what circumstances, ideally aligning with municipal procedures.
+    *   [4.1.18] Threat Detection and Failsafe Training: vSpaceVote shall provide training/documentation on threat detection, response actions, and failsafe procedures if a compromise is detected. A suggested failsafe plan includes acceptable downtime, SLA details, detection, and recovery measures.
+    *   [4.3.2] Subcontractor Security: vSpaceVote is responsible for ensuring any subcontracted third parties meet security requirements, with all known risks documented and mitigated.
+    *   [11.2.1] Security Categorization: Municipal election administrators should complete a security categorization (per guidelines applicable to the designated Geo-Location) before each election; vSpaceVote should provide any needed technical info to facilitate this.
+    *   [11.2.2] High Unmitigated Risk: The municipality might refrain from using an online solution if unmitigated risk is evaluated as "High." vSpaceVote shall respect this determination.
+    *   [11.2.3] Harmonized Threat Risk Assessment: vSpaceVote shall cooperate with a Harmonized Threat Risk Assessment, addressing the possibility of various software/hardware compromises or collusion by multiple actors.
+    *   [11.2.4] Final Residual Risk Acceptance: vSpaceVote shall respect the requirement that the final residual risk acceptance be signed by the Election Administrator or equivalent.
+    *   [4.1.10] Business Continuity and Data Recovery: vSpaceVote shall adopt business continuity and data recovery plans with a Recovery Time Objective ≤ 1 hour and a Recovery Point Objective ≤ 15 minutes.
+
+**II. Operational and Procedural Requirements (5.x.x, 6.x.x, 7.x.x, 11.1.x)**
+
+*   **Voting Process and Auditability:**
+    *   [5.2.1] One Vote Per Voter Per Contest: vSpaceVote shall ensure each voter can cast only one ballot per contest, counting the final vote whether it was cast online or via any other channel.
+    *   [6.2.7] Reproducible Counting: vSpaceVote's counting shall be reproducible with evidence that can be independently audited.
+    *   [6.2.5] Voter Confirmation of Vote Intent: vSpaceVote shall enable each voter to confirm that the cast vote reflects their intent and has not been altered.
+    *   [6.2.6] Independent Evidence of Ballot Inclusion: vSpaceVote should provide evidence (independent from the main system) that each legitimate ballot is included in final results, and only eligible ballots are counted.
+    *   [5.1.2] Pre-Tally Ballot Verification: Before tallying, vSpaceVote should verify that all stored ballots were cast by eligible voters.
+    *   [6.2.1] Audit Procedure: vSpaceVote shall provide an audit procedure, with a testing manual and training for municipalities to conduct audits.
+    *   [6.2.3] Human-Readable Audit Log: vSpaceVote shall produce a human-readable, non-writeable audit log of user actions (login, cast, logoff) but not the actual ballot choice.
+    *   [6.2.4] Chronological System Log: vSpaceVote shall maintain a chronological system log of processes during the voting period, exportable for audit or retention.
+    *   [6.2.2] Immutable Audit Logs: vSpaceVote shall secure and render all audit logs immutable to prevent post-election modification.
+    *   [7.1.1.2] Robust Auditing of User Actions: vSpaceVote shall facilitate robust auditing of user actions, including detection of unauthorized access attempts, privilege escalations, etc.
+    *   [7.1.2.1] Independently Verifiable Cryptographic Proof: vSpaceVote should produce (where applicable) independently verifiable cryptographic proof of correct election results. If the declared result is correct, such evidence should convince observers; if incorrect, it should be detectable.
+
+*   **Data Management:**
+    *   [7.1.3.1] Return or Sanitize Election Data: All election data gathered or processed by vSpaceVote or its subcontractors shall be returned or sanitized upon instruction of the municipality, subject to relevant legislation.
+    *   [7.1.3.2] Data Retention for Legal Reasons: If a legal or procedural reason arises (recount or court order), vSpaceVote shall retain relevant data until instructed otherwise by the municipality.
+    *   [7.1.3.7] Data Destruction on Municipality's Instructions: vSpaceVote shall destroy data upon the municipality's instructions, subject to record-retention legislation.
+    *   [7.1.3.4] Privacy and Re-identification Risk Assessments: vSpaceVote shall conduct privacy and re-identification risk assessments if usage or retention of data changes. Any residual risks must be shared with election authorities.
+    *   [7.1.3.3] No Unauthorized Data Sharing: No proprietary or confidential data shall be shared or published without municipality's written permission.
+
+*   **Testing and Validation:**
+    *   [6.1.1] Logic and Accuracy (L&A) Testing: vSpaceVote shall undergo logic and accuracy (L&A) testing, under the supervision of the election authority, before the voting period.
+    *   [6.1.2] Testing Parameters for Correct Counting: vSpaceVote testing parameters shall prove correct counting across all ballot variations, including valid/invalid classifications.
+    *   [6.1.3] Public L&A Testing Parameters: Parameters for L&A testing should be public, with a detailed procedure document.
+    *   [4.3.3] Load and Simulation Testing: Prior to the election, vSpaceVote shall conduct load and/or simulation testing with an independent third party to reflect actual election day loads.
+    *   [6.1.5] Coordinated Vulnerability Disclosure (CVD) Policy: vSpaceVote should maintain a coordinated vulnerability disclosure (CVD) policy.
+    *   [6.1.6] Cooperation with Additional Security Tests: Election administrators may commission additional tests of vSpaceVote (e.g., vulnerability/penetration testing). vSpaceVote should cooperate without bearing unplanned costs or schedule risks, subject to confidentiality.
+    *   [6.1.7] Open-Ended Adversarial Testing: vSpaceVote should allow open-ended adversarial testing under specified terms/conditions for responsible disclosure.
+    *   [4.3.1] Third-Party Penetration Testing: vSpaceVote shall undergo at least one third-party penetration test of the deployed system every 12 months.
+
+*   **Operational Considerations:**
+    *   [10.1.1] Operational and Accessible Voting Period: vSpaceVote shall be operational and accessible for all voters throughout the designated voting period.
+    *   [10.1.3] Stress/Load Testing: vSpaceVote shall perform stress/load tests simulating peak voting rates (including overlapping elections), reporting findings to the municipality before voting starts.
+    *   [6.1.4] Public Demonstration Environment: vSpaceVote shall offer a public demonstration environment similar to the live system for voter familiarity.
+    *   [11.1.1] Sufficient Qualified Personnel: vSpaceVote shall ensure sufficient qualified personnel are available to address technical issues throughout the contract period.
+    *   [11.1.2] Third-Party Contractor Screening: vSpaceVote shall ensure all its third-party contractors meet local security and screening requirements. The municipality shall likewise ensure that if it directly hires any contractors, those contractors meet the same standards.
+    *   [4.3.4] Backup Subcontractor: vSpaceVote shall engage a backup subcontractor where relevant to ensure continuity if a primary third-party service fails.
+    *   [11.1.3] Vote Reconciliation from Multiple Channels: vSpaceVote shall integrate logic ensuring that if multiple voting channels exist, only one vote per voter per contest is counted in final tabulation.
+
+*   **Documentation and Transparency:**
+    *   [6.3.1] Documentation for Election Administrator: vSpaceVote should provide (under favorable terms) the election administrator with: technical architecture and system specifications; user handbooks; performance documentation on prior outages or vulnerabilities; threat environment assessment and risk-level overview; source code (for official or third-party inspection); confirmation of data destruction/retention; vulnerability assessment reports conducted in the prior 52 weeks.
+    *   [6.3.2] Processes for Independent Observers: vSpaceVote shall document the processes for how independent observers or scrutineers can verify the election, e.g., verifying evidence, observing counting, or handling recounts.
+    *   [4.1.13] Secure Password and Key Sharing: All administrator passwords and decryption keys shall be shared securely with the designated election authority, who is solely responsible for safeguarding them.
+    *   [7.1.3.5] Notification of Data Collection and Usage: If the municipality authorizes data processing, election administrators must notify the electorate about data collection and usage, ensuring that all data is de-identified for any product improvements.
+    *   [7.1.3.6] Opt-Out of Product-Improvement Data Collection: vSpaceVote shall include technical measures allowing users to opt out of product-improvement data collection. Any data used thusly must never be re-identified.
+
+
+**III. User Interface and Accessibility (9.x.x)**
+
+*   [9.1.1.1] Standard Client-Side Technologies: vSpaceVote's user interface shall use standard client-side technologies without voter installation of specialty plug-ins.
+*   [9.1.1.2] User-Centered Design: vSpaceVote shall be designed with a user-centered approach for diverse user types, including those with disabilities.
+*   [9.1.1.3] Accessibility Legislation and WCAG Conformance: vSpaceVote shall meet relevant accessibility legislation and should conform to local Web Content Accessibility Guidelines (WCAG).
+*   [9.1.1.4] Proper Rendering Across Screen Sizes: vSpaceVote shall render properly across screens of all sizes, with minimal scrolling/zooming, and support multiple input methods (touch, stylus, keyboard, etc.).
+*   [9.1.1.6] Consistent Interface and Interactions: vSpaceVote's interface and interactions shall be consistent across all supported devices/browsers.
+*   [9.1.1.8] Notification for Unsupported Platforms: vSpaceVote shall notify voters in plain language if they attempt to use an unsupported platform.
+*   [9.1.1.5] Consistent Order of Contests and Candidates: vSpaceVote shall present consistent order of contests and candidates in accordance with legislative requirements.
+*   [9.1.1.7] Ballot Cast Confirmation/Error Notification: vSpaceVote shall confirm to the voter that their ballot was successfully (or unsuccessfully) cast.
+*   [9.1.1.9] Declining or Spoiling Ballots: vSpaceVote should provide the function to decline or spoil a ballot if local legislation allows.
+*   [9.1.1.10] Accommodation for Voters with Disabilities: vSpaceVote shall accommodate independent usage by voters with disabilities, including audio readouts and screen-reader compatibility.
+*   [9.1.1.11] Localization in Legislated Languages: vSpaceVote shall be localizable in legislated languages, as required by the election administrator.
+*   [9.1.1.12] Session Cancellation: vSpaceVote shall allow voters to cancel or halt a voting session at any point before final submission without being recorded as having voted.
+*   [9.1.1.13] Audio-Tactile Interface Capabilities: If an audio-tactile interface is provided, it shall offer the same verification and casting capabilities as the standard interface.
+*   [9.1.1.14] Unicode Character Support: vSpaceVote shall support Unicode characters for candidate names in English, French, and relevant local languages as required by the designated Geo-Location.
+*   [9.1.1.15] Usability/Accessibility Testing: vSpaceVote shall be tested for usability/accessibility (e.g., ensuring interoperability with assistive technologies).
+*   [9.1.2.1] Accessible and Interoperable Reports: All vSpaceVote-generated reports shall be accessible and interoperable (e.g., CSV format).
+
+---
+
+**IV. System Management and Administration (10.x.x, 11.x.x)**
+
+*   **Resource Management:**
+    *   [4.1.1.g] Sufficient IT Resources: vSpaceVote and third-party providers shall maintain sufficient bandwidth, staffing, and monitoring for testing, incident response, and project management.
+    *   [10.1.1] Operational and Accessible Voting Period: vSpaceVote shall be operational and accessible for all voters throughout the designated voting period.
+    *   [10.1.3] Stress/Load Testing: vSpaceVote shall perform stress/load tests simulating peak voting rates (including overlapping elections), reporting findings to the constituency before voting starts.
+*   **Personnel and Security:**
+    *   [11.1.1] Sufficient Qualified Personnel: vSpaceVote shall ensure sufficient qualified personnel are available to address technical issues throughout the contract period.
+    *   [11.1.2] Third-Party Contractor Screening: vSpaceVote shall ensure all its third-party contractors meet local security and screening requirements. The constituency shall likewise ensure that if it directly hires any contractors, those contractors meet the same standards.
+    *   [11.1.3] Vote Reconciliation from Multiple Channels: vSpaceVote shall integrate logic ensuring that if multiple voting channels exist, only one vote per voter per contest is counted in final tabulation.
+*   **Risk Assessment and Compliance:**
+    *   [11.2.1] Security Categorization: Constituency-related election administrators should complete a security categorization (per guidelines applicable to the designated Geo-Location) before each election; vSpaceVote should provide any needed technical info to facilitate this.
+    *   [11.2.2] High Unmitigated Risk: The constituency might refrain from using an online solution if unmitigated risk is evaluated as "High." vSpaceVote shall respect this determination.
+    *   [11.2.3] Harmonized Threat Risk Assessment: vSpaceVote shall cooperate with a Harmonized Threat Risk Assessment, addressing the possibility of various software/hardware compromises or collusion by multiple actors.
+    *   [11.2.4] Final Residual Risk Acceptance: vSpaceVote shall respect the requirement that the final residual risk acceptance be signed by the Election Administrator or equivalent.
+    *   [11.2.5] Physical Security of Devices (Idle): Any physical devices used by vSpaceVote for online voting (e.g., specialized servers) shall reside in physically secure environments when idle.
+    *   [11.2.6] Physical Security Measures (Tampering): The constituency-related authority shall implement physical security measures to detect/prevent tampering with vSpaceVote-related devices prior to and after the election.
+
+---
